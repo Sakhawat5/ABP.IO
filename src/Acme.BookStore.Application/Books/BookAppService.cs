@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Acme.BookStore.Permissions;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,11 @@ namespace Acme.BookStore.Books
         public BookAppService(IRepository<Book, Guid> repository)
             : base(repository)
         {
-
+            GetPolicyName = BookStorePermissions.Books.Default;
+            GetListPolicyName = BookStorePermissions.Books.Default;
+            CreatePolicyName = BookStorePermissions.Books.Create;
+            UpdatePolicyName = BookStorePermissions.Books.Edit;
+            DeletePolicyName = BookStorePermissions.Books.Delete;
         }
     }
 }
